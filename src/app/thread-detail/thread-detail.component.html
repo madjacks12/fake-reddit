@@ -1,0 +1,25 @@
+<div class="container">
+  <div class="card">
+    <div class="card-body">
+      <h5 class="card-title">{{ threadToDisplay.title }}</h5>
+      <p class="card-text">
+
+        {{ threadToDisplay.content }}
+      </p>
+      <p class="card-text text-muted"><small>By: {{ threadToDisplay.author }}</small></p>
+    </div>
+  </div>
+<!-- <div *ngFor="let thread of threads">
+
+</div> -->
+  <div *ngFor="let post of postsToDisplay" class="card">
+    <div class="card-body">
+      <h5 class="card-title">{{ post.title }}</h5>
+      <p class="card-text">
+
+        {{ post.content }}
+      </p>
+      <p class="card-text text-muted"><small>By: {{ post.author }}</small></p>
+    </div>
+  </div>
+</div>

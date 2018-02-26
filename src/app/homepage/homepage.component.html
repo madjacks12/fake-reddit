@@ -1,0 +1,16 @@
+<h2>Welcome to Fake Reddit.</h2>
+<h4>.....</h4>
+
+<!-- <div *ngFor="let post of posts" (click)="goToDetailPage(post)" class="card">
+  <div class="card-body">
+  <h3><em>{{post.title}}</em> by {{post.author}}</h3>
+    <p>{{post.summary}}</p>
+  </div> -->
+<!-- </div> -->
+
+<div *ngFor="let thread of threads" (click)="goToDetailPage(thread)" class="card">
+  <div class="card-body">
+  <h3><em>{{thread.title}}</em> by {{thread.author}}</h3>
+    <p>{{thread.summary}}</p>
+  </div>
+</div>
