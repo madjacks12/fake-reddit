@@ -13,6 +13,7 @@ import { PostService } from '../post.service';
   styleUrls: ['./thread-detail.component.css'],
   providers: [ThreadService, PostService]
 })
+
 export class ThreadDetailComponent implements OnInit {
   threadId: number = null;
   threadToDisplay: Thread;
