@@ -8,9 +8,10 @@
   </div> -->
 <!-- </div> -->
 
-<div *ngFor="let thread of threads" (click)="goToDetailPage(thread)" class="card">
+<div *ngFor="let thread of threads | async" (click)="goToDetailPage(thread)" class="card">
   <div class="card-body">
   <h3><em>{{thread.title}}</em> by {{thread.author}}</h3>
     <p>{{thread.summary}}</p>
+    <small>{{thread.$key}}</small>
   </div>
 </div>

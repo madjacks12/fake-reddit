@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
+import { FirebaseListObservable } from 'angularfire2/database';
 import { Location } from '@angular/common';
-import { Thread } from '../thread.model';
-import { Post } from '../post.model';
 import { ThreadService } from '../thread.service';
 import { PostService } from '../post.service';
+import { Thread } from '../thread.model';
+import { Post } from '../post.model';
 
 
 @Component({
@@ -15,9 +16,11 @@ import { PostService } from '../post.service';
 })
 
 export class ThreadDetailComponent implements OnInit {
-  threadId: number = null;
-  threadToDisplay: Thread;
-  postsToDisplay: Post[];
+  posts: FirebaseListObservable<any[]>;
+  threadId: string;
+  post: any;
+  threadToDisplay;
+  postToDisplay;
 
   constructor(
     private route: ActivatedRoute,
@@ -28,11 +31,16 @@ export class ThreadDetailComponent implements OnInit {
 
   ngOnInit() {
     this.route.params.forEach((urlParameters) =>{
-      this.threadId = parseInt(urlParameters['id']);
+      this.threadId = urlParameters['id'];
     });
 
+    this.posts = this.postService.getAllPosts();
+
     this.threadToDisplay = this.threadService.getThreadById(this.threadId);
-    this.postsToDisplay = this.postService.getPostsByThreadId(this.threadId);
+    console.log(this.threadToDisplay);
+
+    this.postToDisplay = this.postService.getPostsByThreadId(this.threadId);
+    console.log(this.postToDisplay);
   }
 
 }

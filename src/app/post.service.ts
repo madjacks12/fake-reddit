@@ -1,35 +1,37 @@
 import { Injectable } from '@angular/core';
+import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
 import { Post } from './post.model';
-import { THREADS } from './mock-threads';
-import { POSTS } from './mock-posts';
 
 @Injectable()
 export class PostService {
+  posts: FirebaseListObservable<any[]>;
+  threads: FirebaseListObservable<any[]>;
 
-  constructor() { }
-
-  getPosts() {
-    return POSTS;
+  constructor(private database: AngularFireDatabase) {
+    this.posts = database.list('posts');
+    this.threads = database.list('threads');
   }
 
-  getPostById(postId: number) {
-    for (let post in POSTS) {
-      if (POSTS[post].id === postId) {
-        return POSTS[post];
-      }
-    }
+  getAllPosts() {
+    return this.posts;
   }
 
-  getPostsByThreadId(threadId: number) {
-    let allPosts = [];
+  getPostById() {
+    return this.database.object('posts/-L6JNvopXJ3LWcoFTjJK');
+  }
 
-    for (let thread in THREADS){
-      if (THREADS[thread].id  === threadId){
-        for (let post in POSTS) {
-          allPosts.push(POSTS[post]);
-        }
-      }
-      return allPosts;
-    }
+
+
+  getPostsByThreadId(threadId: string) {
+    // console.log(this.database.object('threads/' + threadId));
+
+    let testPost = this.getPostById();
+    // console.log(this.database.object('posts/L6JNvopXJ3LWcoFTjJK' + '/threadId/'));
+
+    return this.database.object('posts/-L6JNvopXJ3LWcoFTjJK');
+  }
+
+  addPost(newPost: Post) {
+    this.posts.push(newPost);
   }
 }

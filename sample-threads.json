@@ -1,0 +1,17 @@
+{ "threads": [{
+    "author": "Somebody",
+    "title": "What's up?",
+    "content": "A live  album by the English progressive rock band originally released in 1995, on the label EMI in the United Kingdom.",
+    "id": "1"
+    }, {
+    "author": "Dilate",
+    "title": "Ani DiFranco",
+    "content": "Her highest-selling and most acclaimed album, released in 1996.",
+    "id": "2"
+      }, {
+    "author": "Axis Bold As Love",
+    "title": "Jimi Hendrix",
+    "content": "Second studio album by the English-American band, released in 1967.",
+    "id": "3"
+  }]
+}

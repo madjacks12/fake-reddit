@@ -1,0 +1,61 @@
+<div class="card">
+  <div class="card-body">
+    <h3 class="card-title">Add New Thread</h3>
+    <div>
+      <label>Your name:</label>
+      <br>
+      <input #newThreadAuthor>
+    </div>
+
+    <div>
+      <label>Title:</label>
+      <br>
+      <input #newThreadTitle>
+    </div>
+
+    <div>
+      <label>Content:</label>
+      <br>
+      <textarea #newThreadContent></textarea>
+    </div>
+
+    <button (click)="submitNewThreadForm(newThreadAuthor.value, newThreadTitle.value, newThreadContent.value); newThreadAuthor.value=''; newThreadTitle.value=''; newThreadContent.value=''">Add</button>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-body">
+    <h3 class="card-title">Add New Post</h3>
+    <div>
+      <label>Your name:</label>
+      <br>
+      <input #newAuthor>
+    </div>
+
+    <div>
+      <label>Post Title:</label>
+      <br>
+      <input #newTitle>
+    </div>
+
+    <div>
+      <label>Post Summary:</label>
+      <br />
+      <input #newSummary />
+    </div>
+
+    <div>
+      <label>Post Content:</label>
+      <br>
+      <textarea #newContent></textarea>
+    </div>
+
+    <div>
+      <label>Thread ID:</label>
+      <br />
+      <input #threadId />
+    </div>
+
+    <button (click)="submitNewPostForm(newAuthor.value, newTitle.value, newSummary.value, newContent.value, threadId.value); newAuthor.value=''; newTitle.value=''; newSummary.value=''; newContent.value=''; threadId.value=''">Add</button>
+  </div>
+</div>

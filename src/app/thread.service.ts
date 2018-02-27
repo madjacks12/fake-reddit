@@ -1,22 +1,25 @@
 import { Injectable } from '@angular/core';
 import { Thread } from './thread.model';
-import { THREADS } from './mock-threads';
+import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
 
 @Injectable()
 export class ThreadService {
+  threads: FirebaseListObservable<any[]>;
 
-  constructor() { }
-
-  getThreads() {
-    return THREADS;
+  constructor(private database: AngularFireDatabase) {
+    this.threads = database.list('threads');
   }
 
-  getThreadById(threadId: number) {
-    for (let thread in THREADS) {
-      if (THREADS[thread].id === threadId) {
-        return THREADS[thread];
-      }
-    }
+  getThreads() {
+    return this.threads;
+  }
+
+  getThreadById(threadId: string) {
+    return this.database.object('threads/' + threadId);
+  }
+
+  addThread(newThread: Thread) {
+    this.threads.push(newThread);
   }
 
 }

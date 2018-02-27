@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 
 import { Thread } from '../thread.model';
 import { Post } from '../post.model';
-
+import { FirebaseListObservable } from 'angularfire2/database';
 import { ThreadService } from '../thread.service';
 import { PostService } from '../post.service';
 
@@ -16,7 +16,7 @@ import { PostService } from '../post.service';
 })
 
 export class HomepageComponent implements OnInit {
-  threads: Thread[];
+  threads: FirebaseListObservable<any[]>;
   posts: Post[];
 
   constructor(private router: Router, private threadService: ThreadService) {}
@@ -28,8 +28,8 @@ export class HomepageComponent implements OnInit {
     this.threads = this.threadService.getThreads();
   }
 
-  goToDetailPage(clickedThread: Thread) {
-    this.router.navigate(['threads', clickedThread.id]);
+  goToDetailPage(clickedThread) {
+    this.router.navigate(['threads', clickedThread.$key]);
   }
 
   // goToDetailPage(clickedPost: Post) {

@@ -1,25 +1,25 @@
 <div class="container">
   <div class="card">
     <div class="card-body">
-      <h5 class="card-title">{{ threadToDisplay.title }}</h5>
+      <h5 class="card-title">{{ (threadToDisplay | async)?.title }}</h5>
       <p class="card-text">
-
-        {{ threadToDisplay.content }}
+        {{ (threadToDisplay | async)?.content }}
       </p>
-      <p class="card-text text-muted"><small>By: {{ threadToDisplay.author }}</small></p>
+      <p class="card-text text-muted"><small>By: {{ (threadToDisplay | async)?.author }}</small></p>
     </div>
   </div>
 <!-- <div *ngFor="let thread of threads">
 
 </div> -->
-  <div *ngFor="let post of postsToDisplay" class="card">
+  <!-- <div *ngFor="let post of allPosts" class="card"> -->
+  <div class="card">
     <div class="card-body">
-      <h5 class="card-title">{{ post.title }}</h5>
+      <h5 class="card-title">{{ (postToDisplay | async)?.author }}</h5>
       <p class="card-text">
 
-        {{ post.content }}
+        {{ (postToDisplay | async)?.content }}
       </p>
-      <p class="card-text text-muted"><small>By: {{ post.author }}</small></p>
+      <p class="card-text text-muted"><small>By: {{ (postToDisplay | async)?.author }}</small></p>
     </div>
   </div>
 </div>
